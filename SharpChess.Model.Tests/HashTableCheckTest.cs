@@ -119,30 +119,30 @@ namespace SharpChess.Model.Tests
 
         private int NodeCountTest(string fen, int depth)
         {
-            Game_Accessor.NewInternal(fen);
-            Game_Accessor.MaximumSearchDepth = depth;
-            Game_Accessor.ClockFixedTimePerMove = new TimeSpan(0, 10, 0); // 10 minute max
-            Game_Accessor.UseRandomOpeningMoves = false;
-            Game_Accessor.PlayerToPlay.Brain.Think();
-            // TimeSpan elpased = Game_Accessor.PlayerToPlay.Brain.ThinkingTimeElpased;
-            return Game_Accessor.PlayerToPlay.Brain.Search.PositionsSearchedThisTurn;
+            Game.NewInternal(fen);
+            Game.MaximumSearchDepth = depth;
+            Game.ClockFixedTimePerMove = new TimeSpan(0, 10, 0); // 10 minute max
+            Game.UseRandomOpeningMoves = false;
+            Game.PlayerToPlay.Brain.Think();
+            // TimeSpan elpased = Game.PlayerToPlay.Brain.ThinkingTimeElpased;
+            return Game.PlayerToPlay.Brain.Search.PositionsSearchedThisTurn;
         }
 
         private TimeSpan NodeCountTime(string fen, int depth)
         {
-            Game_Accessor.NewInternal(fen);
-            Game_Accessor.MaximumSearchDepth = depth;
-            Game_Accessor.ClockFixedTimePerMove = new TimeSpan(0, 10, 0); // 10 minute max
-            Game_Accessor.UseRandomOpeningMoves = false;
+            Game.NewInternal(fen);
+            Game.MaximumSearchDepth = depth;
+            Game.ClockFixedTimePerMove = new TimeSpan(0, 10, 0); // 10 minute max
+            Game.UseRandomOpeningMoves = false;
             System.Diagnostics.Stopwatch s = new System.Diagnostics.Stopwatch();
             s.Start();
-            Game_Accessor.PlayerToPlay.Brain.Think();
+            Game.PlayerToPlay.Brain.Think();
            s.Stop();
            System.Diagnostics.Debug.WriteLine("elapsted = " + s.Elapsed);
            return s.Elapsed;
             // Console.Debug("asdafsd");            
-//            // TimeSpan elpased = Game_Accessor.PlayerToPlay.Brain.ThinkingTimeElpased;
- //           return Game_Accessor.PlayerToPlay.Brain.Search.PositionsSearchedThisTurn;
+//            // TimeSpan elpased = Game.PlayerToPlay.Brain.ThinkingTimeElpased;
+ //           return Game.PlayerToPlay.Brain.Search.PositionsSearchedThisTurn;
         }
 
     }

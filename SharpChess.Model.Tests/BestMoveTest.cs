@@ -248,21 +248,21 @@ namespace SharpChess.Model.Tests
         private void BestMoveTest(
             string testPositionFen, string expectedMoveFrom, string expectedMoveTo, int expectedDepth)
         {
-            Game_Accessor.NewInternal(testPositionFen);
-            Game_Accessor.MaximumSearchDepth = expectedDepth;
-            Game_Accessor.ClockFixedTimePerMove = new TimeSpan(0, MaximumSecondsPerTest, 0);
-            Game_Accessor.UseRandomOpeningMoves = false;
-            Game_Accessor.PlayerToPlay.Brain.Think();
+            Game.NewInternal(testPositionFen);
+            Game.MaximumSearchDepth = expectedDepth;
+            Game.ClockFixedTimePerMove = new TimeSpan(0, MaximumSecondsPerTest, 0);
+            Game.UseRandomOpeningMoves = false;
+            Game.PlayerToPlay.Brain.Think();
 
-            int positions = Game_Accessor.PlayerToPlay.Brain.Search.PositionsSearchedThisTurn;
-            TimeSpan elpased = Game_Accessor.PlayerToPlay.Brain.ThinkingTimeElpased;
+            int positions = Game.PlayerToPlay.Brain.Search.PositionsSearchedThisTurn;
+            TimeSpan elpased = Game.PlayerToPlay.Brain.ThinkingTimeElpased;
 
-            Debug.WriteLine(string.Format("Nodes: {0} ", Game_Accessor.PlayerToPlay.Brain.Search.PositionsSearchedThisTurn));
-            Debug.WriteLine(string.Format("Time: {0} ", Game_Accessor.PlayerToPlay.Brain.ThinkingTimeElpased));
-            Debug.WriteLine(string.Format("Score: {0} ", Game_Accessor.PlayerToPlay.Brain.PrincipalVariation[0].Score));
+            Debug.WriteLine(string.Format("Nodes: {0} ", Game.PlayerToPlay.Brain.Search.PositionsSearchedThisTurn));
+            Debug.WriteLine(string.Format("Time: {0} ", Game.PlayerToPlay.Brain.ThinkingTimeElpased));
+            Debug.WriteLine(string.Format("Score: {0} ", Game.PlayerToPlay.Brain.PrincipalVariation[0].Score));
 
-            Assert.AreEqual(expectedMoveFrom, Game_Accessor.PlayerToPlay.Brain.PrincipalVariation[0].From.Name , "From move wrong");
-            Assert.AreEqual(expectedMoveTo, Game_Accessor.PlayerToPlay.Brain.PrincipalVariation[0].To.Name, "To move wrong");
+            Assert.AreEqual(expectedMoveFrom, Game.PlayerToPlay.Brain.PrincipalVariation[0].From.Name , "From move wrong");
+            Assert.AreEqual(expectedMoveTo, Game.PlayerToPlay.Brain.PrincipalVariation[0].To.Name, "To move wrong");
         }
 
         #endregion

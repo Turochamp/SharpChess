@@ -62,6 +62,7 @@
     <Compile Include="AI\OpeningBook.cs" />
     <Compile Include="AI\OpeningBookSimple.cs" />
     <Compile Include="AI\Search.cs" />
+    <Compile Include="Assembly.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="BoardDebug.cs" />
     <Compile Include="FEN.cs" />

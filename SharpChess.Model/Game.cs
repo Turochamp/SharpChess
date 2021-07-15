@@ -1042,7 +1042,7 @@ namespace SharpChess.Model
         /// <summary>
         ///   Start a new game. For internal use only.
         /// </summary>
-        private static void NewInternal()
+        internal static void NewInternal()
         {
             NewInternal(string.Empty);
         }
@@ -1051,7 +1051,7 @@ namespace SharpChess.Model
         ///   Start a new game from the specified FEN string position. For internal use only.
         /// </summary>
         /// <param name="fenString"> The str fen. </param>
-        private static void NewInternal(string fenString)
+        internal static void NewInternal(string fenString)
         {
             if (fenString == string.Empty)
             {

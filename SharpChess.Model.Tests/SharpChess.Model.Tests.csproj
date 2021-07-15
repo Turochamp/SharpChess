@@ -59,7 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Shadow Include="Test References\SharpChess.Model.accessor" />
+    <None Include="Test References\SharpChess.Model.accessor" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpChess.Model\SharpChess.Model.csproj">
