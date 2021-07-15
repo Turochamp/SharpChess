@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.223
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpChess", "SharpChess Game\SharpChess.csproj", "{F5FD2F27-6DCB-453C-B018-0AC8D4BC4109}"
 EndProject
@@ -15,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		SharpChess Solution.vsmdi = SharpChess Solution.vsmdi
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SharpChess Setup", "SharpChess Setup\SharpChess Setup.vdproj", "{972AC84C-F7E2-4239-80CA-17032B8EA991}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpChess.Model", "SharpChess.Model\SharpChess.Model.csproj", "{EE301A37-33A9-4B7A-BE08-D001057610CD}"
 EndProject
@@ -42,12 +40,6 @@ Global
 		{F5FD2F27-6DCB-453C-B018-0AC8D4BC4109}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F5FD2F27-6DCB-453C-B018-0AC8D4BC4109}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F5FD2F27-6DCB-453C-B018-0AC8D4BC4109}.Release|x86.ActiveCfg = Release|Any CPU
-		{972AC84C-F7E2-4239-80CA-17032B8EA991}.Debug|Any CPU.ActiveCfg = Debug
-		{972AC84C-F7E2-4239-80CA-17032B8EA991}.Debug|Mixed Platforms.ActiveCfg = Debug
-		{972AC84C-F7E2-4239-80CA-17032B8EA991}.Debug|x86.ActiveCfg = Debug
-		{972AC84C-F7E2-4239-80CA-17032B8EA991}.Release|Any CPU.ActiveCfg = Release
-		{972AC84C-F7E2-4239-80CA-17032B8EA991}.Release|Mixed Platforms.ActiveCfg = Release
-		{972AC84C-F7E2-4239-80CA-17032B8EA991}.Release|x86.ActiveCfg = Release
 		{EE301A37-33A9-4B7A-BE08-D001057610CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EE301A37-33A9-4B7A-BE08-D001057610CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE301A37-33A9-4B7A-BE08-D001057610CD}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -71,6 +63,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E5356D8-5366-45FF-921E-40B76716CC6D}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = SharpChess Solution.vsmdi
