@@ -27,6 +27,7 @@ ClientBin/
 *.cache
 *.ignore
 *.vsmdi
+/.vs
 
 # Packages #
 ############
@@ -70,3 +71,4 @@ TestResults/
 ######################
 *.vsp
 *.psess
+
