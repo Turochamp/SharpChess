@@ -1,0 +1,92 @@
+2021-07-16 19:39:26.341 +02:00 [INF] Loaded 3 extensions
+2021-07-16 19:39:27.818 +02:00 [INF] MSBuild registered from C:\Program Files\dotnet\sdk\5.0.104\
+2021-07-16 19:39:30.605 +02:00 [INF] Initializing upgrade step Select an entrypoint
+2021-07-16 19:39:32.885 +02:00 [INF] Applying upgrade step Select an entrypoint
+2021-07-16 19:39:36.858 +02:00 [INF] Upgrade step Select an entrypoint applied successfully
+2021-07-16 19:39:38.058 +02:00 [INF] Initializing upgrade step Select project to upgrade
+2021-07-16 19:39:39.813 +02:00 [INF] Applying upgrade step Select project to upgrade
+2021-07-16 19:39:43.818 +02:00 [INF] Upgrade step Select project to upgrade applied successfully
+2021-07-16 19:39:46.902 +02:00 [INF] Initializing upgrade step Back up project
+2021-07-16 19:39:48.460 +02:00 [INF] Applying upgrade step Back up project
+2021-07-16 19:39:49.532 +02:00 [INF] Backing up C:\Src\net6\SharpChess\SharpChess.Model to C:\Src\net6\SharpChess.backup\SharpChess.Model
+2021-07-16 19:39:50.605 +02:00 [INF] Project backed up to C:\Src\net6\SharpChess.backup\SharpChess.Model
+2021-07-16 19:39:50.610 +02:00 [INF] Upgrade step Back up project applied successfully
+2021-07-16 19:39:52.208 +02:00 [INF] Initializing upgrade step Convert project file to SDK style
+2021-07-16 19:39:53.184 +02:00 [INF] Applying upgrade step Convert project file to SDK style
+2021-07-16 19:39:53.189 +02:00 [INF] Converting project file format with try-convert, version 0.7.226301
+2021-07-16 19:39:55.978 +02:00 [INF] [dotnet] Conversion complete!
+2021-07-16 19:39:56.417 +02:00 [INF] Project file converted successfully! The project may require additional changes to build successfully against the new .NET target.
+2021-07-16 19:39:59.202 +02:00 [INF] Upgrade step Convert project file to SDK style applied successfully
+2021-07-16 19:39:59.213 +02:00 [INF] Initializing upgrade step Clean up NuGet package references
+2021-07-16 19:40:02.731 +02:00 [WRN] No version of Microsoft.CSharp found that supports ["net40"]; leaving unchanged
+2021-07-16 19:40:03.297 +02:00 [WRN] No version of System.Data.DataSetExtensions found that supports ["net40"]; leaving unchanged
+2021-07-16 19:40:04.042 +02:00 [INF] Reference to .NET Upgrade Assistant analyzer package (Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers, version 0.2.236301) needs added
+2021-07-16 19:40:04.077 +02:00 [INF] Packages to be added: Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers, Version=0.2.236301
+2021-07-16 19:40:06.281 +02:00 [INF] Applying upgrade step Clean up NuGet package references
+2021-07-16 19:40:06.291 +02:00 [INF] Adding package reference: Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers, Version=0.2.236301
+2021-07-16 19:40:09.077 +02:00 [WRN] No version of Microsoft.CSharp found that supports ["net40"]; leaving unchanged
+2021-07-16 19:40:09.088 +02:00 [WRN] No version of System.Data.DataSetExtensions found that supports ["net40"]; leaving unchanged
+2021-07-16 19:40:09.096 +02:00 [INF] Upgrade step Clean up NuGet package references applied successfully
+2021-07-16 19:40:13.186 +02:00 [INF] Initializing upgrade step Update TFM
+2021-07-16 19:40:13.198 +02:00 [INF] TFM needs updated to netstandard2.0
+2021-07-16 19:40:14.398 +02:00 [INF] Applying upgrade step Update TFM
+2021-07-16 19:40:17.357 +02:00 [INF] Updated TFM to netstandard2.0
+2021-07-16 19:40:17.362 +02:00 [INF] Upgrade step Update TFM applied successfully
+2021-07-16 19:40:19.568 +02:00 [INF] Initializing upgrade step Update NuGet Packages
+2021-07-16 19:40:21.686 +02:00 [INF] No package updates needed
+2021-07-16 19:40:21.689 +02:00 [INF] Initializing upgrade step Add template files
+2021-07-16 19:40:21.708 +02:00 [INF] 0 expected template items needed
+2021-07-16 19:40:21.718 +02:00 [INF] Initializing upgrade step Update source code
+2021-07-16 19:40:25.658 +02:00 [INF] Initializing upgrade step Move to next project
+2021-07-16 19:40:26.975 +02:00 [INF] Applying upgrade step Move to next project
+2021-07-16 19:40:26.978 +02:00 [INF] Upgrade step Move to next project applied successfully
+2021-07-16 19:40:27.908 +02:00 [INF] Initializing upgrade step Select project to upgrade
+2021-07-16 19:40:29.480 +02:00 [INF] Applying upgrade step Select project to upgrade
+2021-07-16 19:40:30.445 +02:00 [INF] Upgrade step Select project to upgrade applied successfully
+2021-07-16 19:40:31.737 +02:00 [INF] Initializing upgrade step Back up project
+2021-07-16 19:40:33.952 +02:00 [INF] Applying upgrade step Back up project
+2021-07-16 19:40:39.502 +02:00 [INF] Backing up C:\Src\net6\SharpChess\SharpChess.Model.Tests to C:\Src\net6\SharpChess.backup\SharpChess.Model.Tests
+2021-07-16 19:40:40.227 +02:00 [INF] Project backed up to C:\Src\net6\SharpChess.backup\SharpChess.Model.Tests
+2021-07-16 19:40:40.232 +02:00 [INF] Upgrade step Back up project applied successfully
+2021-07-16 19:40:42.795 +02:00 [INF] Initializing upgrade step Convert project file to SDK style
+2021-07-16 19:40:44.191 +02:00 [INF] Applying upgrade step Convert project file to SDK style
+2021-07-16 19:40:44.194 +02:00 [INF] Converting project file format with try-convert, version 0.7.226301
+2021-07-16 19:40:46.958 +02:00 [INF] [dotnet] Conversion complete!
+2021-07-16 19:40:47.469 +02:00 [INF] Project file converted successfully! The project may require additional changes to build successfully against the new .NET target.
+2021-07-16 19:40:49.871 +02:00 [INF] Upgrade step Convert project file to SDK style applied successfully
+2021-07-16 19:40:49.881 +02:00 [INF] Initializing upgrade step Clean up NuGet package references
+2021-07-16 19:40:52.475 +02:00 [WRN] No version of Microsoft.CSharp found that supports ["net40"]; leaving unchanged
+2021-07-16 19:40:52.482 +02:00 [WRN] No version of System.Data.DataSetExtensions found that supports ["net40"]; leaving unchanged
+2021-07-16 19:40:52.488 +02:00 [INF] Reference to .NET Upgrade Assistant analyzer package (Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers, version 0.2.236301) needs added
+2021-07-16 19:40:52.494 +02:00 [INF] Packages to be added: Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers, Version=0.2.236301
+2021-07-16 19:40:53.864 +02:00 [INF] Applying upgrade step Clean up NuGet package references
+2021-07-16 19:40:53.867 +02:00 [INF] Adding package reference: Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers, Version=0.2.236301
+2021-07-16 19:40:56.776 +02:00 [WRN] No version of Microsoft.CSharp found that supports ["net40"]; leaving unchanged
+2021-07-16 19:40:56.782 +02:00 [WRN] No version of System.Data.DataSetExtensions found that supports ["net40"]; leaving unchanged
+2021-07-16 19:40:56.786 +02:00 [INF] Upgrade step Clean up NuGet package references applied successfully
+2021-07-16 19:40:58.340 +02:00 [INF] Initializing upgrade step Update TFM
+2021-07-16 19:40:58.382 +02:00 [INF] TFM needs updated to netstandard2.0
+2021-07-16 19:40:59.404 +02:00 [INF] Applying upgrade step Update TFM
+2021-07-16 19:41:02.291 +02:00 [INF] Updated TFM to netstandard2.0
+2021-07-16 19:41:02.298 +02:00 [INF] Upgrade step Update TFM applied successfully
+2021-07-16 19:41:04.397 +02:00 [INF] Initializing upgrade step Update NuGet Packages
+2021-07-16 19:41:06.654 +02:00 [INF] Marking package Microsoft.CSharp for removal because it appears to be a transitive dependency
+2021-07-16 19:41:06.662 +02:00 [INF] Marking package System.Data.DataSetExtensions for removal because it appears to be a transitive dependency
+2021-07-16 19:41:06.672 +02:00 [INF] Packages to be removed: Microsoft.CSharp, Version=4.7.0
+System.Data.DataSetExtensions, Version=4.5.0
+2021-07-16 19:41:07.843 +02:00 [INF] Applying upgrade step Update NuGet Packages
+2021-07-16 19:41:07.846 +02:00 [INF] Removing outdated package reference: Microsoft.CSharp, Version=4.7.0
+2021-07-16 19:41:07.849 +02:00 [INF] Removing outdated package reference: System.Data.DataSetExtensions, Version=4.5.0
+2021-07-16 19:41:10.971 +02:00 [INF] Upgrade step Update NuGet Packages applied successfully
+2021-07-16 19:41:14.243 +02:00 [INF] Initializing upgrade step Add template files
+2021-07-16 19:41:14.246 +02:00 [INF] 0 expected template items needed
+2021-07-16 19:41:14.251 +02:00 [INF] Initializing upgrade step Update source code
+2021-07-16 19:41:14.832 +02:00 [INF] Initializing upgrade step Move to next project
+2021-07-16 19:41:16.098 +02:00 [INF] Applying upgrade step Move to next project
+2021-07-16 19:41:16.102 +02:00 [INF] Upgrade step Move to next project applied successfully
+2021-07-16 19:41:17.121 +02:00 [INF] Initializing upgrade step Select project to upgrade
+2021-07-16 19:41:17.161 +02:00 [INF] No projects need upgraded for selected entrypoint
+2021-07-16 19:41:17.164 +02:00 [INF] Initializing upgrade step Finalize upgrade
+2021-07-16 19:41:18.500 +02:00 [INF] Applying upgrade step Finalize upgrade
+2021-07-16 19:41:18.504 +02:00 [INF] Upgrade step Finalize upgrade applied successfully
+2021-07-16 19:41:20.198 +02:00 [INF] Upgrade has completed. Please review any changes.
