@@ -5,7 +5,7 @@ using SharpChess.Domain;
 namespace SharpChess.Infrastructure
 {
     // TODO: Cover with integration tests
-    public class RegistryService : IRegistryService
+    public class WindowsRegistry : IWindowsRegistry
     {
         public string GetStringValue(string name)
         {

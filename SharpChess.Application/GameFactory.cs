@@ -7,7 +7,7 @@ namespace SharpChess.Application
     {
         public static Game Create()
         {
-            return new Game(new RegistryService());
+            return new Game(new WindowsRegistry());
         }
     }
 }

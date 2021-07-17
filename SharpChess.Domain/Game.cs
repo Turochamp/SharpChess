@@ -57,7 +57,7 @@ namespace SharpChess.Domain
         /// <summary>
         ///   Initializes members of the <see cref="Game" /> class.
         /// </summary>
-        public Game(IRegistryService registryService)
+        public Game(IWindowsRegistry registryService)
         {
             // Do nothing if already initialized
             if (_instance != null)
@@ -780,7 +780,7 @@ namespace SharpChess.Domain
 
         #region Properties
 
-        private IRegistryService RegistryService { get; set; }
+        private IWindowsRegistry RegistryService { get; set; }
         
         #endregion
 
