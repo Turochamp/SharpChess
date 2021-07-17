@@ -319,7 +319,7 @@ namespace SharpChess.Model
         /// <summary>
         ///   Gets or sets the number of pawns in play.
         /// </summary>
-        public int PawnCountInPlay { get; set; }
+        private int PawnCountInPlay { get; set; }
 
         /// <summary>
         ///   Gets the ordinal square offset for a pawn advancing one square forward.
@@ -535,7 +535,7 @@ namespace SharpChess.Model
         /// <summary>
         ///   Gets the sum of the player's piece value.
         /// </summary>
-        public int TotalPieceValue
+        private int TotalPieceValue
         {
             get
             {

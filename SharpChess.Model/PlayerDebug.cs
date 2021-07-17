@@ -31,7 +31,7 @@ namespace SharpChess.Model
     /// <summary>
     ///   Debug helper methods for the player class.
     /// </summary>
-    public static class PlayerDebug
+    internal static class PlayerDebug
     {
         #region Constants and Fields
 

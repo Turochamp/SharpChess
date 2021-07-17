@@ -29,7 +29,7 @@ namespace SharpChess.Model
     /// <summary>
     /// Zobrist Hash values used in Hash (Transposition) Table class.
     /// </summary>
-    public static class PieceHashCodes
+    internal static class PieceHashCodes
     {
         #region Constants and Fields
 

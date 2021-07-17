@@ -3,7 +3,7 @@
 //   SharpChess.com
 // </copyright>
 // <summary>
-//   Converts a Forsyth–Edwards Notation (FEN) string into a SharpChess board position.
+//   Converts a Forsythï¿½Edwards Notation (FEN) string into a SharpChess board position.
 //   http://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
@@ -34,7 +34,7 @@ namespace SharpChess.Model
     #endregion
 
     /// <summary>
-    /// Converts a Forsyth–Edwards Notation (FEN) string into a SharpChess board position.
+    /// Converts a Forsythï¿½Edwards Notation (FEN) string into a SharpChess board position.
     /// http://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation
     /// </summary>
     public static class Fen

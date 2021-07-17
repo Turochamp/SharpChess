@@ -172,7 +172,7 @@ namespace SharpChess.Model
         /// <returns>
         /// Board position string.
         /// </returns>
-        public static string DebugGetBoard()
+        private static string DebugGetBoard()
         {
             var strbBoard = new StringBuilder(160);
             strbBoard.Append("  0 1 2 3 4 5 6 7 :PlayerToPlay = ");

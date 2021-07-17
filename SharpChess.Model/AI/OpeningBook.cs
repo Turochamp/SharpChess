@@ -46,12 +46,12 @@ namespace SharpChess.Model.AI
         /// <summary>
         /// The has h_ tabl e_ size.
         /// </summary>
-        public const int HashTableSize = 1000777;
+        private const int HashTableSize = 1000777;
 
         /// <summary>
         /// The unknown.
         /// </summary>
-        public const Move NotFoundInHashTable = null;
+        private const Move NotFoundInHashTable = null;
 
         /// <summary>
         ///   Pointer to the HashTable
@@ -98,7 +98,7 @@ namespace SharpChess.Model.AI
         /// <summary>
         /// Clear opening book (hash table)
         /// </summary>
-        public static void Clear()
+        private static void Clear()
         {
             for (uint intIndex = 0; intIndex < HashTableSize; intIndex++)
             {

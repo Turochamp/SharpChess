@@ -500,7 +500,7 @@ namespace SharpChess.Model
         /// <summary>
         ///   Gets Top.
         /// </summary>
-        public IPieceTop Top { get; set; }
+        internal IPieceTop Top { get; set; }
 
         /// <summary>
         /// Gets the material value of this piece.

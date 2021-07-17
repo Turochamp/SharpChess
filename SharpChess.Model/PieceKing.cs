@@ -28,7 +28,7 @@ namespace SharpChess.Model
     /// <summary>
     /// The piece king.
     /// </summary>
-    public class PieceKing : IPieceTop
+    internal class PieceKing : IPieceTop
     {
         #region Constants and Fields
 
@@ -50,7 +50,7 @@ namespace SharpChess.Model
         /// <summary>
         /// Directional vectors of where the piece can go
         /// </summary>
-        public static int[] moveVectors = { 1, 15, 16, 17, -1, -15, -16, -17 };
+        private static int[] moveVectors = { 1, 15, 16, 17, -1, -15, -16, -17 };
 
         #endregion
 

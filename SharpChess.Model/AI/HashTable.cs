@@ -88,22 +88,22 @@ namespace SharpChess.Model.AI
         /// <summary>
         ///   Gets the number of hash table Collisions that have occured.
         /// </summary>
-        public static int Collisions { get; private set; }
+        private static int Collisions { get; set; }
 
         /// <summary>
         ///   Gets the number of hash table Hits that have occured.
         /// </summary>
-        public static int Hits { get; private set; }
+        private static int Hits { get; set; }
 
         /// <summary>
         ///   Gets the number of hash table Overwrites that have occured.
         /// </summary>
-        public static int Overwrites { get; private set; }
+        private static int Overwrites { get; set; }
 
         /// <summary>
         ///   Gets the number of hash table Probes that have occured.
         /// </summary>
-        public static int Probes { get; private set; }
+        private static int Probes { get; set; }
 
         /// <summary>
         ///   Gets the number of hash table slots used.
@@ -129,7 +129,7 @@ namespace SharpChess.Model.AI
         /// <summary>
         ///   Gets the number of hash table Writes that have occured.
         /// </summary>
-        public static int Writes { get; private set; }
+        private static int Writes { get; set; }
 
         #endregion
 

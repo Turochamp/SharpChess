@@ -306,7 +306,7 @@ namespace SharpChess.Model
         /// <summary>
         /// Gets last move turn-number.
         /// </summary>
-        public int LastMoveTurnNo { get; private set; }
+        private int LastMoveTurnNo { get; set; }
 
         /// <summary>
         /// Gets the move number.
@@ -352,7 +352,7 @@ namespace SharpChess.Model
         /// <summary>
         /// Gets the turn number.
         /// </summary>
-        public int TurnNo { get; private set; }
+        private int TurnNo { get; set; }
 
         /// <summary>
         /// Gets the piece being captured.
@@ -362,7 +362,7 @@ namespace SharpChess.Model
         /// <summary>
         /// Gets the ordinal of the piece being captured.
         /// </summary>
-        public int PieceCapturedOrdinal { get; private set; }
+        private int PieceCapturedOrdinal { get; set; }
 
         #endregion
 

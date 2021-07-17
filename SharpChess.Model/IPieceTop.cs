@@ -30,7 +30,7 @@ namespace SharpChess.Model
     /// IPieceTop interface. The <see cref="Piece"/>  class represents the base of a chess piece, on which different "tops" can be placed. 
     /// The Top of a piece will change when a piece is promoted. e.g. a Pawn is promoted to a Queen, or a Knight.
     /// </summary>
-    public interface IPieceTop
+    internal interface IPieceTop
     {
         #region Public Properties
 

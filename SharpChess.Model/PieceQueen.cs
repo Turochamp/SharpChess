@@ -28,7 +28,7 @@ namespace SharpChess.Model
     /// <summary>
     /// The piece queen.
     /// </summary>
-    public class PieceQueen : IPieceTop
+    internal class PieceQueen : IPieceTop
     {
         #region Constants and Fields
 

@@ -28,7 +28,7 @@ namespace SharpChess.Model
     /// <summary>
     /// The player black.
     /// </summary>
-    public class PlayerBlack : Player
+    internal class PlayerBlack : Player
     {
         #region Constructors and Destructors
 

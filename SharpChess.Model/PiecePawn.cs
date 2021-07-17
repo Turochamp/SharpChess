@@ -36,7 +36,7 @@ namespace SharpChess.Model
     /// <summary>
     /// The piece pawn.
     /// </summary>
-    public class PiecePawn : IPieceTop
+    internal class PiecePawn : IPieceTop
     {
         #region Constants and Fields
 

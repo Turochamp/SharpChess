@@ -268,27 +268,27 @@ namespace SharpChess.Model
         /// <summary>
         ///   Gets or sets a value indicating whether to use Aspiration Search.
         /// </summary>
-        public static bool EnableAspiration { get; set; }
+        public static bool EnableAspiration { get; private set; }
 
         /// <summary>
         ///   Gets or sets a value indicating whether to use Search Extensions.
         /// </summary>
-        public static bool EnableExtensions { get; set; }
+        public static bool EnableExtensions { get; private set; }
 
         /// <summary>
         ///   Gets or sets a value indicating whether to use the history heuristic ( <see cref="HistoryHeuristic" /> class).
         /// </summary>
-        public static bool EnableHistoryHeuristic { get; set; }
+        public static bool EnableHistoryHeuristic { get; private set; }
 
         /// <summary>
         ///   Gets or sets a value indicating whether to use the killer move heuristic ( <see cref="KillerMoves" /> class).
         /// </summary>
-        public static bool EnableKillerMoves { get; set; }
+        public static bool EnableKillerMoves { get; private set; }
 
         /// <summary>
         ///   Gets or sets a value indicating whether to use Null Move Forward Pruning.
         /// </summary>
-        public static bool EnableNullMovePruning { get; set; }
+        public static bool EnableNullMovePruning { get; private set; }
 
         /// <summary>
         ///   Gets or sets a value indicating whether Pondering has been enabled.
@@ -298,17 +298,17 @@ namespace SharpChess.Model
         /// <summary>
         ///   Gets or sets a value indicating whether to use PVS Search.
         /// </summary>
-        public static bool EnablePvsSearch { get; set; }
+        public static bool EnablePvsSearch { get; private set; }
 
         /// <summary>
         ///   Gets or sets a value indicating whether to use Quiescense.
         /// </summary>
-        public static bool EnableQuiescense { get; set; }
+        public static bool EnableQuiescense { get; private set; }
 
         /// <summary>
         ///   Gets or sets a value indicating whether to use Search Reductions.
         /// </summary>
-        public static bool EnableReductions { get; set; }
+        public static bool EnableReductions { get; private set; }
 
         /// <summary>
         ///   Gets or sets a value indicating whether to use Late Move Reductions.
@@ -1042,7 +1042,7 @@ namespace SharpChess.Model
         /// <summary>
         ///   Start a new game. For internal use only.
         /// </summary>
-        internal static void NewInternal()
+        private static void NewInternal()
         {
             NewInternal(string.Empty);
         }

@@ -125,7 +125,7 @@ namespace SharpChess.Model
         /// <summary>
         /// Gets Parent object that is holding this move list.
         /// </summary>
-        public Piece Parent { get; private set; }
+        private Piece Parent { get; set; }
 
         /// <summary>
         /// Gets Penultimate move in this list.
