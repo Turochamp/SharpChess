@@ -24,14 +24,14 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 
-namespace SharpChess.Model.AI
+namespace SharpChess.Domain.AI
 {
     #region Using
 
     using System;
     using System.Xml;
 
-    using SharpChess.Model;
+    using SharpChess.Domain;
 
     #endregion
 

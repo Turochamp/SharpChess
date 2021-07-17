@@ -33,8 +33,8 @@ namespace SharpChess
     using System.Reflection;
     using System.Windows.Forms;
     using FormsApplication = System.Windows.Forms.Application;
-    using SharpChess.Model;
-    using SharpChess.Model.AI;
+    using SharpChess.Domain;
+    using SharpChess.Domain.AI;
     using SharpChess.Application;
 
     #endregion
@@ -3450,7 +3450,7 @@ namespace SharpChess
                     {
                         // Check to see it the move is valid, by comparing against all possible valid moves
                         bool blnIsPromotion = false;
-                        Move.MoveNames movenamePromotion = Model.Move.MoveNames.NullMove;
+                        Move.MoveNames movenamePromotion = Domain.Move.MoveNames.NullMove;
                         foreach (Move move in this.m_movesPossible)
                         {
                             if (move.To == this.m_squareTo)
@@ -3459,10 +3459,10 @@ namespace SharpChess
                                 {
                                     switch (move.Name)
                                     {
-                                        case Model.Move.MoveNames.PawnPromotionQueen:
-                                        case Model.Move.MoveNames.PawnPromotionRook:
-                                        case Model.Move.MoveNames.PawnPromotionBishop:
-                                        case Model.Move.MoveNames.PawnPromotionKnight:
+                                        case Domain.Move.MoveNames.PawnPromotionQueen:
+                                        case Domain.Move.MoveNames.PawnPromotionRook:
+                                        case Domain.Move.MoveNames.PawnPromotionBishop:
+                                        case Domain.Move.MoveNames.PawnPromotionKnight:
                                             blnIsPromotion = true;
                                             frmPieceSelector formPieceSelector = new frmPieceSelector();
                                             formPieceSelector.Colour = move.Piece.Player.Colour;

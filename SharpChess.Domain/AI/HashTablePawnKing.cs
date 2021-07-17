@@ -25,7 +25,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 
-namespace SharpChess.Model.AI
+namespace SharpChess.Domain.AI
 {
     /// <summary>
     /// The hash table purely for pawn position. Used to optimised evalulation of score for pawn positions.

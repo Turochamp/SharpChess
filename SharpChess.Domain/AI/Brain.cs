@@ -26,7 +26,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 
-namespace SharpChess.Model.AI
+namespace SharpChess.Domain.AI
 {
     #region Using
 

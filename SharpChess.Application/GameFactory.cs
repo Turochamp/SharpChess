@@ -1,5 +1,5 @@
 ﻿using SharpChess.Infrastructure;
-using SharpChess.Model;
+using SharpChess.Domain;
 
 namespace SharpChess.Application
 {

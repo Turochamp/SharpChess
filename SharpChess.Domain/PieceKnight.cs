@@ -25,7 +25,7 @@
 
 using System.Collections.Generic;
 
-namespace SharpChess.Model
+namespace SharpChess.Domain
 {
     /// <summary>
     /// The piece knight.

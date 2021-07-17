@@ -33,7 +33,7 @@ namespace SharpChess
     using System.Resources;
     using System.Windows.Forms;
 
-    using SharpChess.Model;
+    using SharpChess.Domain;
 
     #endregion
 

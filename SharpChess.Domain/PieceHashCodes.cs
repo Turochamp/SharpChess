@@ -24,7 +24,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 
-namespace SharpChess.Model
+namespace SharpChess.Domain
 {
     /// <summary>
     /// Zobrist Hash values used in Hash (Transposition) Table class.

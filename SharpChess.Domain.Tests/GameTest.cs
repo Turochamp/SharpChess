@@ -2,7 +2,7 @@
 using System;
 using SharpChess.Application;
 
-namespace SharpChess.Model.Tests
+namespace SharpChess.Domain.Tests
 {
 
 

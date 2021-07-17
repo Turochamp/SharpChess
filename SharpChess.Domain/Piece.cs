@@ -25,7 +25,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 
-namespace SharpChess.Model
+namespace SharpChess.Domain
 {
     #region Using
 
@@ -730,7 +730,7 @@ namespace SharpChess.Model
                     moves.Remove(move);
                 }
 
-                Model.Move.Undo(moveUndo);
+                Domain.Move.Undo(moveUndo);
             }
         }
 
@@ -835,7 +835,7 @@ namespace SharpChess.Model
         {
             Square squarepieceCaptured = square;
 
-            if (moveName == Model.Move.MoveNames.EnPassent)
+            if (moveName == Domain.Move.MoveNames.EnPassent)
             {
                 // Override when en passent
                 squarepieceCaptured = Board.GetSquare(square.Ordinal - this.Player.PawnForwardOffset);
@@ -888,7 +888,7 @@ namespace SharpChess.Model
             Piece pieceRook;
             switch (moveName)
             {
-                case Model.Move.MoveNames.CastleKingSide:
+                case Domain.Move.MoveNames.CastleKingSide:
                     pieceRook = move.Piece.Player.Colour == Player.PlayerColourNames.White
                                     ? Board.GetPiece(7, 0)
                                     : Board.GetPiece(7, 7);
@@ -904,7 +904,7 @@ namespace SharpChess.Model
                     this.Player.HasCastled = true;
                     break;
 
-                case Model.Move.MoveNames.CastleQueenSide:
+                case Domain.Move.MoveNames.CastleQueenSide:
                     pieceRook = move.Piece.Player.Colour == Player.PlayerColourNames.White
                                     ? Board.GetPiece(0, 0)
                                     : Board.GetPiece(0, 7);
@@ -920,23 +920,23 @@ namespace SharpChess.Model
                     this.Player.HasCastled = true;
                     break;
 
-                case Model.Move.MoveNames.PawnPromotionQueen:
+                case Domain.Move.MoveNames.PawnPromotionQueen:
                     this.Promote(PieceNames.Queen);
                     break;
 
-                case Model.Move.MoveNames.PawnPromotionRook:
+                case Domain.Move.MoveNames.PawnPromotionRook:
                     this.Promote(PieceNames.Rook);
                     break;
 
-                case Model.Move.MoveNames.PawnPromotionBishop:
+                case Domain.Move.MoveNames.PawnPromotionBishop:
                     this.Promote(PieceNames.Bishop);
                     break;
 
-                case Model.Move.MoveNames.PawnPromotionKnight:
+                case Domain.Move.MoveNames.PawnPromotionKnight:
                     this.Promote(PieceNames.Knight);
                     break;
 
-                case Model.Move.MoveNames.EnPassent:
+                case Domain.Move.MoveNames.EnPassent:
                     Board.HashCodeA ^= Board.GetPiece(this.Square.Ordinal - this.Player.PawnForwardOffset).HashCodeA;
                     Board.HashCodeB ^= Board.GetPiece(this.Square.Ordinal - this.Player.PawnForwardOffset).HashCodeB;
                     Board.PawnHashCodeA ^= Board.GetPiece(this.Square.Ordinal - this.Player.PawnForwardOffset).HashCodeA;

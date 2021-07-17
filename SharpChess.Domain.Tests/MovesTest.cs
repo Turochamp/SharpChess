@@ -23,14 +23,14 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 
-namespace SharpChess.Model.Tests
+namespace SharpChess.Domain.Tests
 {
     #region Using
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using SharpChess;
-    using SharpChess.Model;
+    using SharpChess.Domain;
 
     #endregion
 

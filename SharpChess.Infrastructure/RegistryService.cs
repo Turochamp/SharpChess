@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.Win32;
-using SharpChess.Model;
+using SharpChess.Domain;
 
 namespace SharpChess.Infrastructure
 {

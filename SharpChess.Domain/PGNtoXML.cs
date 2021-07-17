@@ -23,9 +23,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 
-namespace SharpChess.Model
+namespace SharpChess.Domain
 {
-    using SharpChess.Model.AI;
+    using SharpChess.Domain.AI;
 
     /// <summary>
     /// Converts PGN opening book files, into SharpChess XML files, which may then be used with <see cref = "OpeningBook" /> and <see cref = "OpeningBookSimple" /> classes.

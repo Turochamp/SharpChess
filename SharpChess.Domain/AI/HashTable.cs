@@ -24,7 +24,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 
-namespace SharpChess.Model.AI
+namespace SharpChess.Domain.AI
 {
     // TODO Incorporate side-to-play colour into hash table key.
     // TODO Incorporate 3 move repetition into hash table key.

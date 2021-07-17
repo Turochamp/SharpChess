@@ -1,4 +1,4 @@
-﻿namespace SharpChess.Model
+﻿namespace SharpChess.Domain
 {
     public interface IRegistryService
     {

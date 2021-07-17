@@ -8,7 +8,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace SharpChess.Model.Tests
+namespace SharpChess.Domain.Tests
 {
     #region Using
 
@@ -16,7 +16,7 @@ namespace SharpChess.Model.Tests
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using SharpChess.Application;
-    using SharpChess.Model;
+    using SharpChess.Domain;
 
     #endregion
 

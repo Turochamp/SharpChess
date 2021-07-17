@@ -18,7 +18,7 @@
 
 #endregion
 
-namespace SharpChess.Model
+namespace SharpChess.Domain
 {
     #region Using
 
