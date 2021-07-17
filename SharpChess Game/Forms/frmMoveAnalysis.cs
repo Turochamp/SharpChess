@@ -292,5 +292,7 @@ namespace SharpChess
         {
 
         }
+
+        private static Game Game => Game.Instance;
     }
 }

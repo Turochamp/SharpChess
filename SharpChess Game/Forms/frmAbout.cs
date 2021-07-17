@@ -33,6 +33,7 @@ namespace SharpChess
     using System.Drawing;
     using System.Resources;
     using System.Windows.Forms;
+    using FormsApplication = System.Windows.Forms.Application;
 
     #endregion
 
@@ -292,8 +293,8 @@ namespace SharpChess
         /// </param>
         private void frmAbout_Load(object sender, EventArgs e)
         {
-            this.lblProductName.Text = Application.ProductName;
-            this.lblVersion.Text = Application.ProductVersion;
+            this.lblProductName.Text = FormsApplication.ProductName;
+            this.lblVersion.Text = FormsApplication.ProductVersion;
         }
 
         /// <summary>

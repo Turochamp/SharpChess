@@ -912,5 +912,7 @@ namespace SharpChess
         }
 
         #endregion
+
+        private static Game Game => Game.Instance;
     }
 }

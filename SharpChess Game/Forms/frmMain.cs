@@ -32,9 +32,10 @@ namespace SharpChess
     using System.Drawing;
     using System.Reflection;
     using System.Windows.Forms;
-
+    using FormsApplication = System.Windows.Forms.Application;
     using SharpChess.Model;
     using SharpChess.Model.AI;
+    using SharpChess.Application;
 
     #endregion
 
@@ -744,7 +745,7 @@ namespace SharpChess
         [STAThread]
         private static void Main()
         {
-            Application.Run(new frmMain());
+            FormsApplication.Run(new frmMain());
         }
 
         /// <summary>
@@ -2443,7 +2444,7 @@ namespace SharpChess
 
             this.RenderStatus();
 
-            this.Text = Application.ProductName + " - " + Game.FileName;
+            this.Text = FormsApplication.ProductName + " - " + Game.FileName;
 
             this.Refresh();
         }
@@ -2628,7 +2629,7 @@ namespace SharpChess
                 }
             }
 
-            this.Text = Application.ProductName + " - " + Game.FileName;
+            this.Text = FormsApplication.ProductName + " - " + Game.FileName;
         }
 
         /// <summary>
@@ -2918,6 +2919,9 @@ namespace SharpChess
         /// </param>
         private void frmMain_Load(object sender, EventArgs e)
         {
+            // Game.Instance is set by constructor
+            GameFactory.Create();
+
             Game.PlayerWhite.Brain.MoveConsideredEvent += this.Player_MoveConsidered;
             Game.PlayerBlack.Brain.MoveConsideredEvent += this.Player_MoveConsidered;
             Game.PlayerWhite.Brain.ThinkingBeginningEvent += this.Player_ThinkingBeginning;
@@ -2945,7 +2949,7 @@ namespace SharpChess
 
             Game.BackupGamePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "BackupGame.sharpchess");
 
-            this.Text = Application.ProductName + " - " + Game.FileName;
+            this.Text = FormsApplication.ProductName + " - " + Game.FileName;
             this.AssignMenuChecks();
             this.SizeHistoryPane();
 
@@ -3092,7 +3096,7 @@ namespace SharpChess
         private void mnuExit_Click(object sender, EventArgs e)
         {
             this.Close(); // 01Apr05 Nimzo Close down threads properly before exit.
-            Application.Exit();
+            FormsApplication.Exit();
         }
 
         /// <summary>
@@ -3605,5 +3609,7 @@ namespace SharpChess
         }
 
         #endregion
+
+        private static Game Game => Game.Instance;
     }
 }

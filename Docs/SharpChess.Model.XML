@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>SharpChess.Model</name>
+        <name>SharpChess.Domain</name>
     </assembly>
     <members>
         <member name="T:SharpChess.Model.AI.Brain">
@@ -1834,9 +1834,9 @@
               The file name.
             </summary>
         </member>
-        <member name="M:SharpChess.Model.Game.#cctor">
+        <member name="M:SharpChess.Model.Game.#ctor(SharpChess.Model.IRegistryService)">
             <summary>
-              Initializes static members of the <see cref="T:SharpChess.Model.Game" /> class.
+              Initializes members of the <see cref="T:SharpChess.Model.Game" /> class.
             </summary>
         </member>
         <member name="T:SharpChess.Model.Game.GameEvent">
