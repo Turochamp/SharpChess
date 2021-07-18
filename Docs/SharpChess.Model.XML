@@ -1829,12 +1829,7 @@
               Represents the game of chess over its lfetime. Holds the board, players, turn number and everything related to the chess game in progress.
             </summary>
         </member>
-        <member name="F:SharpChess.Domain.Game.saveGameFileName">
-            <summary>
-              The file name.
-            </summary>
-        </member>
-        <member name="M:SharpChess.Domain.Game.#ctor(SharpChess.Domain.IWindowsRegistry,SharpChess.Domain.IGameSaveFile)">
+        <member name="M:SharpChess.Domain.Game.#ctor">
             <summary>
               Initializes members of the <see cref="T:SharpChess.Domain.Game" /> class.
             </summary>
@@ -2207,14 +2202,6 @@
               Undo the last move.
             </summary>
         </member>
-        <member name="M:SharpChess.Domain.Game.AddSaveGameNode(System.Xml.XmlDocument,System.Xml.XmlElement,SharpChess.Domain.Move)">
-            <summary>
-              Add a move node to the save game XML document.
-            </summary>
-            <param name="xmldoc"> Xml document representing the save game file. </param>
-            <param name="xmlnodeGame"> Parent game xmlnode. </param>
-            <param name="move"> Move to append to the save game Xml document. </param>
-        </member>
         <member name="M:SharpChess.Domain.Game.CheckIfAutoNextMove">
             <summary>
               Start then next move automatically, if its the computers turn.
@@ -2291,6 +2278,11 @@
         <member name="M:SharpChess.Domain.Game.UndoMoveInternal">
             <summary>
               Undo move. For internal use only.
+            </summary>
+        </member>
+        <member name="P:SharpChess.Domain.Game.SaveGameFileName">
+            <summary>
+              The file name.
             </summary>
         </member>
         <member name="T:SharpChess.Domain.IPieceTop">

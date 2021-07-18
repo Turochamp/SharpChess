@@ -1,4 +1,4 @@
-﻿namespace SharpChess.Domain
+﻿namespace SharpChess.Application.Interface
 {
     public interface IWindowsRegistry
     {

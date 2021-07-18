@@ -31,11 +31,7 @@ namespace SharpChess.Domain
     #region Using
 
     using System;
-    using System.Globalization;
-    using System.Reflection;
-    using System.Xml;
     using SharpChess.Domain.AI;
-    using SharpChess.Domain.Dto;
 
     #endregion
 
@@ -45,29 +41,18 @@ namespace SharpChess.Domain
     /// </summary>
     public class Game
     {
-        #region Constants and Fields
-
-        /// <summary>
-        ///   The file name.
-        /// </summary>
-        private string saveGameFileName = string.Empty;
-
-        #endregion
-
         #region Constructors and Destructors
 
         /// <summary>
         ///   Initializes members of the <see cref="Game" /> class.
         /// </summary>
-        public Game(IWindowsRegistry registryService, IGameSaveFile gameSaveFile)
+        public Game()
         {
             // Do nothing if already initialized
             if (_instance != null)
                 return;
 
             _instance = this;
-            RegistryService = registryService;
-            GameSaveFile = gameSaveFile;
 
             EnableFeatures();
             ClockIncrementPerMove = new TimeSpan(0, 0, 0);
@@ -93,45 +78,6 @@ namespace SharpChess.Domain
 
             PlayerWhite.Brain.ReadyToMakeMoveEvent += PlayerReadyToMakeMove;
             PlayerBlack.Brain.ReadyToMakeMoveEvent += PlayerReadyToMakeMove;
-
-            if (RegistryService.GetStringValue("FileName") == null)
-            {
-                saveGameFileName = string.Empty;
-            }
-            else
-            {
-                saveGameFileName = RegistryService.GetStringValue("FileName");
-            }
-
-            if (RegistryService.GetStringValue("ShowThinking") == null)
-            {
-                ShowThinking = true;
-            }
-            else
-            {
-                ShowThinking = RegistryService.GetStringValue("ShowThinking") == "1";
-            }
-
-            // Delete deprecated values
-            if (RegistryService.GetStringValue("EnablePondering") != null)
-            {
-                RegistryService.DeleteValue("EnablePondering");
-            }
-
-            if (RegistryService.GetStringValue("DisplayMoveAnalysisTree") != null)
-            {
-                RegistryService.DeleteValue("DisplayMoveAnalysisTree");
-            }
-
-            if (RegistryService.GetStringValue("ClockMoves") != null)
-            {
-                RegistryService.DeleteValue("ClockMoves");
-            }
-
-            if (RegistryService.GetStringValue("ClockMinutes") != null)
-            {
-                RegistryService.DeleteValue("ClockMinutes");
-            }
 
             // OpeningBook.BookConvert(Game.PlayerWhite);
         }
@@ -215,6 +161,7 @@ namespace SharpChess.Domain
                 return _instance;
             }
         }
+
         /// <summary>
         ///   Gets the available MegaBytes of free computer memory.
         /// </summary>
@@ -343,7 +290,7 @@ namespace SharpChess.Domain
         /// <summary>
         ///   Gets or sets the FEN string for the chess Start Position.
         /// </summary>
-        public string FenStartPosition { internal get; set; }
+        public string FenStartPosition { get; set; }
 
         /// <summary>
         ///   Gets or sets FiftyMoveDrawBase. Appears to be a value set when using a FEN string. Doesn't seem quite right! TODO Invesigate FiftyMoveDrawBase.
@@ -357,7 +304,7 @@ namespace SharpChess.Domain
         {
             get
             {
-                return saveGameFileName == string.Empty ? "New Game" : saveGameFileName;
+                return SaveGameFileName == string.Empty ? "New Game" : SaveGameFileName;
             }
         }
 
@@ -515,7 +462,7 @@ namespace SharpChess.Domain
             SuspendPondering();
 
             NewInternal();
-            saveGameFileName = fileName;
+            SaveGameFileName = fileName;
             bool blnSuccess = LoadGame(fileName);
             if (blnSuccess)
             {
@@ -674,7 +621,7 @@ namespace SharpChess.Domain
 
             SaveBackup();
             SaveGame(fileName);
-            saveGameFileName = fileName;
+            SaveGameFileName = fileName;
 
             GameSaved();
 
@@ -726,16 +673,13 @@ namespace SharpChess.Domain
         /// <summary>
         ///   Terminate the game.
         /// </summary>
-        public void TerminateGame()
+        public virtual void TerminateGame()
         {
             WinBoard.StopListener();
 
             SuspendPondering();
             PlayerWhite.Brain.AbortThinking();
             PlayerBlack.Brain.AbortThinking();
-
-            RegistryService.SetStringValue("FileName", saveGameFileName);
-            RegistryService.SetStringValue("ShowThinking", ShowThinking ? "1" : "0");
         }
 
         /// <summary>
@@ -781,12 +725,6 @@ namespace SharpChess.Domain
 
         #endregion
 
-        #region Properties
-
-        private IWindowsRegistry RegistryService { get; set; }
-        private IGameSaveFile GameSaveFile { get; set; }
-
-        #endregion
         #region Methods
 
         /// <summary>
@@ -834,104 +772,9 @@ namespace SharpChess.Domain
         /// </summary>
         /// <param name="strFileName"> The file name. </param>
         /// <returns> True if load was successful. </returns>
-        internal bool LoadGame(string strFileName)
+        public virtual bool LoadGame(string strFileName)
         {
-            MoveRedoList.Clear();
-
-            GameSaveDto loadedData = GameSaveFile.Load(strFileName);
-
-            if (loadedData == null)
-            {
-                return false;
-            }
-
-            if (loadedData.FEN != string.Empty)
-            {
-                NewInternal(loadedData.FEN);
-            }
-
-            if (loadedData.WhitePlayerIntellegence.HasValue)
-            {
-                PlayerWhite.Intellegence = loadedData.WhitePlayerIntellegence.Value;
-            }
-
-            if (loadedData.BlackPlayerIntellegence.HasValue)
-            {
-                PlayerBlack.Intellegence = loadedData.BlackPlayerIntellegence.Value;
-            }
-
-            if (loadedData.BoardOrientation.HasValue)
-            {
-                Board.Orientation = loadedData.BoardOrientation.Value;
-            }
-
-            if (loadedData.DifficultyLevel.HasValue)
-            {
-                DifficultyLevel = loadedData.DifficultyLevel.Value;
-            }
-
-            if (loadedData.ClockMoves.HasValue)
-            {
-                ClockMaxMoves = loadedData.ClockMoves.Value;
-            }
-
-            if (loadedData.ClockMinutes.HasValue)
-            {
-                ClockTime = new TimeSpan(0, loadedData.ClockMinutes.Value, 0);
-            }
-
-            if (loadedData.ClockSeconds.HasValue)
-            {
-                ClockTime = new TimeSpan(0, 0, loadedData.ClockSeconds.Value);
-            }
-
-            if (loadedData.MaximumSearchDepth.HasValue)
-            {
-                MaximumSearchDepth = loadedData.MaximumSearchDepth.Value;
-            }
-
-            if (loadedData.Pondering.HasValue)
-            {
-                EnablePondering = loadedData.Pondering.Value;
-            }
-
-            if (loadedData.UseRandomOpeningMoves.HasValue)
-            {
-                UseRandomOpeningMoves = loadedData.UseRandomOpeningMoves.Value;
-            }
-
-            foreach (var move in loadedData.Moves)
-            { 
-                MakeAMoveInternal(Move.MoveNameFromString(move.Name), move.From.Piece, move.To);
-
-                TimeSpan tsnTimeStamp;
-                if (!move.SecondsElapsed.HasValue)
-                {
-                    if (MoveHistory.Count <= 2)
-                    {
-                        tsnTimeStamp = new TimeSpan(0);
-                    }
-                    else
-                    {
-                        tsnTimeStamp = MoveHistory.PenultimateForSameSide.TimeStamp + (new TimeSpan(0, 0, 30));
-                    }
-                }
-                else
-                {
-                    tsnTimeStamp = new TimeSpan(0, 0, move.SecondsElapsed.Value);
-                }
-
-                MoveHistory.Last.TimeStamp = tsnTimeStamp;
-                MoveHistory.Last.Piece.Player.Clock.TimeElapsed = tsnTimeStamp;
-            }
-
-            int intTurnNo = loadedData.TurnNo.HasValue ? loadedData.TurnNo.Value : loadedData.Moves.Count;
-            for (int intIndex = loadedData.Moves.Count; intIndex > intTurnNo; intIndex--)
-            {
-                UndoMoveInternal();
-            }
-
-            return true;
+            return false;
         }
 
         /// <summary>
@@ -940,7 +783,7 @@ namespace SharpChess.Domain
         /// <param name="moveName"> The move name. </param>
         /// <param name="piece"> The piece to move. </param>
         /// <param name="square"> The square to move to. </param>
-        private void MakeAMoveInternal(Move.MoveNames moveName, Piece piece, Square square)
+        protected void MakeAMoveInternal(Move.MoveNames moveName, Piece piece, Square square)
         {
             MoveRedoList.Clear();
             Move move = piece.Move(moveName, square);
@@ -993,7 +836,7 @@ namespace SharpChess.Domain
         /// <summary>
         ///   Start a new game. For internal use only.
         /// </summary>
-        private void NewInternal()
+        public void NewInternal()
         {
             NewInternal(string.Empty);
         }
@@ -1002,7 +845,7 @@ namespace SharpChess.Domain
         ///   Start a new game from the specified FEN string position. For internal use only.
         /// </summary>
         /// <param name="fenString"> The str fen. </param>
-        internal void NewInternal(string fenString)
+        public void NewInternal(string fenString)
         {
             if (fenString == string.Empty)
             {
@@ -1019,7 +862,7 @@ namespace SharpChess.Domain
 
             UndoAllMovesInternal();
             MoveRedoList.Clear();
-            saveGameFileName = string.Empty;
+            SaveGameFileName = string.Empty;
             Fen.SetBoardPosition(fenString);
             PlayerWhite.Clock.Reset();
             PlayerBlack.Clock.Reset();
@@ -1085,10 +928,8 @@ namespace SharpChess.Domain
         ///   Save game using the specified file name.
         /// </summary>
         /// <param name="fileName"> The file name. </param>
-        internal void SaveGame(string fileName)
+        public virtual void SaveGame(string fileName)
         {
-            GameSaveDto data = GameSaveDto.Create(this);
-            GameSaveFile.Save(fileName, data, GameSaveDto.CreateMoves(MoveRedoList));
         }
 
         /// <summary>
@@ -1102,7 +943,7 @@ namespace SharpChess.Domain
         /// <summary>
         ///   Undo all moves. For internal use pnly.
         /// </summary>
-        private void UndoAllMovesInternal()
+        protected void UndoAllMovesInternal()
         {
             while (MoveHistory.Count > 0)
             {
@@ -1113,7 +954,7 @@ namespace SharpChess.Domain
         /// <summary>
         ///   Undo move. For internal use only.
         /// </summary>
-        private void UndoMoveInternal()
+        protected void UndoMoveInternal()
         {
             if (MoveHistory.Count > 0)
             {
@@ -1140,5 +981,10 @@ namespace SharpChess.Domain
         }
 
         #endregion
+
+        /// <summary>
+        ///   The file name.
+        /// </summary>
+        protected string SaveGameFileName { get; set; } = string.Empty;
     }
 }

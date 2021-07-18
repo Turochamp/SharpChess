@@ -1,5 +1,6 @@
-﻿using SharpChess.Domain;
-using SharpChess.Domain.Dto;
+﻿using SharpChess.Application.Dto;
+using SharpChess.Application.Interface;
+using SharpChess.Domain;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

@@ -33,7 +33,7 @@ namespace SharpChess.Domain.Tests
         public static void MyClassInitialize(TestContext testContext)
         {
             // Game.Instance is set by constructor
-            GameFactory.Create();
+            GameFactory.CreateLocal();
         }
 
         [TestMethod]

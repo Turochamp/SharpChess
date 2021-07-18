@@ -1,7 +1,7 @@
-﻿using System;
-using System.Globalization;
+﻿using SharpChess.Domain;
+using System;
 
-namespace SharpChess.Domain.Dto
+namespace SharpChess.Application.Dto
 {
     // Move to application layer
     public record GameSaveMoveDto(

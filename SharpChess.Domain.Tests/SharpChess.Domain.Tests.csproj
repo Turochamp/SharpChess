@@ -30,5 +30,6 @@
   <ItemGroup>
     <ProjectReference Include="..\SharpChess.Application\SharpChess.Application.csproj" />
     <ProjectReference Include="..\SharpChess.Domain\SharpChess.Domain.csproj" />
+    <ProjectReference Include="..\SharpChess.Infrastructure\SharpChess.Infrastructure.csproj" />
   </ItemGroup>
 </Project>

@@ -7,10 +7,10 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using SharpChess.Domain.Dto;
+using SharpChess.Application.Dto;
 using System.Collections.Generic;
 
-namespace SharpChess.Domain
+namespace SharpChess.Application.Interface
 {
     public interface IGameSaveFile
     {

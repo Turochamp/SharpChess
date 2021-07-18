@@ -151,6 +151,7 @@
     <Compile Include="Forms\frmWinBoard.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GameFactory.cs" />
     <EmbeddedResource Include="Forms\frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </EmbeddedResource>
@@ -232,6 +233,10 @@
     <ProjectReference Include="..\SharpChess.Domain\SharpChess.Domain.csproj">
       <Project>{794c4be8-1a24-4ff8-a21e-1c0b3c3f7a59}</Project>
       <Name>SharpChess.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpChess.Infrastructure\SharpChess.Infrastructure.csproj">
+      <Project>{A46FE627-5E7D-42C6-91A6-2AF9FBF8497F}</Project>
+      <Name>SharpChess.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

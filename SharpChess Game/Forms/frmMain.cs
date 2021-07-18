@@ -35,7 +35,6 @@ namespace SharpChess
     using FormsApplication = System.Windows.Forms.Application;
     using SharpChess.Domain;
     using SharpChess.Domain.AI;
-    using SharpChess.Application;
 
     #endregion
 
@@ -2920,7 +2919,7 @@ namespace SharpChess
         private void frmMain_Load(object sender, EventArgs e)
         {
             // Game.Instance is set by constructor
-            GameFactory.Create();
+            GameFactory.CreateLocal();
 
             Game.PlayerWhite.Brain.MoveConsideredEvent += this.Player_MoveConsidered;
             Game.PlayerBlack.Brain.MoveConsideredEvent += this.Player_MoveConsidered;

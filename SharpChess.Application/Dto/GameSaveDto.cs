@@ -1,9 +1,8 @@
-﻿using System;
+﻿using SharpChess.Domain;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace SharpChess.Domain.Dto
+namespace SharpChess.Application.Dto
 {
     // Move to Application layer
     public record GameSaveDto(
@@ -40,7 +39,7 @@ namespace SharpChess.Domain.Dto
         public static List<GameSaveMoveDto> CreateMoves(Moves sourceMoves)
         {
             List<GameSaveMoveDto> result = new();
-            foreach(Move source in sourceMoves)
+            foreach (Move source in sourceMoves)
             {
                 result.Add(GameSaveMoveDto.Create(source));
             }

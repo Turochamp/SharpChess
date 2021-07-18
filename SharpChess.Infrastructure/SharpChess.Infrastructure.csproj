@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SharpChess.Application\SharpChess.Application.csproj" />
     <ProjectReference Include="..\SharpChess.Domain\SharpChess.Domain.csproj" />
   </ItemGroup>
 

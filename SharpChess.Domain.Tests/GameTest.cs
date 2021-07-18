@@ -43,7 +43,7 @@ namespace SharpChess.Domain.Tests
         {
             // Game.Instance is set by constructor
             // TODO: Should mock infrastructure to make it truly unit test
-            GameFactory.Create();
+            GameFactory.CreateLocal();
         }
 
         //Use ClassCleanup to run code after all tests in a class have run
