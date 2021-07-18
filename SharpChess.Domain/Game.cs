@@ -787,26 +787,7 @@ namespace SharpChess.Domain
         private IGameSaveFile GameSaveFile { get; set; }
 
         #endregion
-
         #region Methods
-
-        // TODO: Remove, when, unused code
-        /// <summary>
-        ///   Add a move node to the save game XML document.
-        /// </summary>
-        /// <param name="xmldoc"> Xml document representing the save game file. </param>
-        /// <param name="xmlnodeGame"> Parent game xmlnode. </param>
-        /// <param name="move"> Move to append to the save game Xml document. </param>
-        private void AddSaveGameNode(XmlDocument xmldoc, XmlElement xmlnodeGame, Move move)
-        {
-            XmlElement xmlnodeMove = xmldoc.CreateElement("Move");
-            xmlnodeGame.AppendChild(xmlnodeMove);
-            xmlnodeMove.SetAttribute("MoveNo", move.MoveNo.ToString(CultureInfo.InvariantCulture));
-            xmlnodeMove.SetAttribute("Name", move.Name.ToString());
-            xmlnodeMove.SetAttribute("From", move.From.Name);
-            xmlnodeMove.SetAttribute("To", move.To.Name);
-            xmlnodeMove.SetAttribute("SecondsElapsed", Convert.ToInt32(move.TimeStamp.TotalSeconds).ToString(CultureInfo.InvariantCulture));
-        }
 
         /// <summary>
         ///   Start then next move automatically, if its the computers turn.
@@ -1108,42 +1089,6 @@ namespace SharpChess.Domain
         {
             GameSaveDto data = GameSaveDto.Create(this);
             GameSaveFile.Save(fileName, data, GameSaveDto.CreateMoves(MoveRedoList));
-            
-            /*
-            XmlDocument xmldoc = new XmlDocument();
-            XmlElement xmlnodeGame = xmldoc.CreateElement("Game");
-
-            xmldoc.AppendChild(xmlnodeGame);
-
-            xmlnodeGame.SetAttribute("FEN", FenStartPosition == Fen.GameStartPosition ? string.Empty : FenStartPosition);
-            xmlnodeGame.SetAttribute("TurnNo", TurnNo.ToString(CultureInfo.InvariantCulture));
-            xmlnodeGame.SetAttribute(
-                "WhitePlayer", PlayerWhite.Intellegence == Player.PlayerIntellegenceNames.Human ? "Human" : "Computer");
-            xmlnodeGame.SetAttribute(
-                "BlackPlayer", PlayerBlack.Intellegence == Player.PlayerIntellegenceNames.Human ? "Human" : "Computer");
-            xmlnodeGame.SetAttribute(
-                "BoardOrientation", Board.Orientation == Board.OrientationNames.White ? "White" : "Black");
-            xmlnodeGame.SetAttribute("Version", Assembly.GetExecutingAssembly().GetName().Version.ToString());
-            xmlnodeGame.SetAttribute("DifficultyLevel", DifficultyLevel.ToString(CultureInfo.InvariantCulture));
-            xmlnodeGame.SetAttribute("ClockMoves", ClockMaxMoves.ToString(CultureInfo.InvariantCulture));
-            xmlnodeGame.SetAttribute("ClockSeconds", ClockTime.TotalSeconds.ToString(CultureInfo.InvariantCulture));
-            xmlnodeGame.SetAttribute("MaximumSearchDepth", MaximumSearchDepth.ToString(CultureInfo.InvariantCulture));
-            xmlnodeGame.SetAttribute("Pondering", EnablePondering ? "1" : "0");
-            xmlnodeGame.SetAttribute("UseRandomOpeningMoves", UseRandomOpeningMoves ? "1" : "0");
-
-            foreach (Move move in MoveHistory)
-            {
-                AddSaveGameNode(xmldoc, xmlnodeGame, move);
-            }
-
-            // Redo moves
-            for (int intIndex = MoveRedoList.Count - 1; intIndex >= 0; intIndex--)
-            {
-                AddSaveGameNode(xmldoc, xmlnodeGame, MoveRedoList[intIndex]);
-            }
-
-            xmldoc.Save(fileName);
-            */
         }
 
         /// <summary>
