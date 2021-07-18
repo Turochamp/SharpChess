@@ -35,9 +35,11 @@ namespace SharpChess.Domain
     using System.Reflection;
     using System.Xml;
     using SharpChess.Domain.AI;
+    using SharpChess.Domain.Dto;
 
     #endregion
 
+    // TODO: Move Use Cases to Application layer 
     /// <summary>
     ///   Represents the game of chess over its lfetime. Holds the board, players, turn number and everything related to the chess game in progress.
     /// </summary>
@@ -57,7 +59,7 @@ namespace SharpChess.Domain
         /// <summary>
         ///   Initializes members of the <see cref="Game" /> class.
         /// </summary>
-        public Game(IWindowsRegistry registryService)
+        public Game(IWindowsRegistry registryService, IGameSaveFile gameSaveFile)
         {
             // Do nothing if already initialized
             if (_instance != null)
@@ -65,6 +67,7 @@ namespace SharpChess.Domain
 
             _instance = this;
             RegistryService = registryService;
+            GameSaveFile = gameSaveFile;
 
             EnableFeatures();
             ClockIncrementPerMove = new TimeSpan(0, 0, 0);
@@ -340,7 +343,7 @@ namespace SharpChess.Domain
         /// <summary>
         ///   Gets or sets the FEN string for the chess Start Position.
         /// </summary>
-        public string FenStartPosition { private get; set; }
+        public string FenStartPosition { internal get; set; }
 
         /// <summary>
         ///   Gets or sets FiftyMoveDrawBase. Appears to be a value set when using a FEN string. Doesn't seem quite right! TODO Invesigate FiftyMoveDrawBase.
@@ -781,11 +784,13 @@ namespace SharpChess.Domain
         #region Properties
 
         private IWindowsRegistry RegistryService { get; set; }
-        
+        private IGameSaveFile GameSaveFile { get; set; }
+
         #endregion
 
         #region Methods
 
+        // TODO: Remove, when, unused code
         /// <summary>
         ///   Add a move node to the save game XML document.
         /// </summary>
@@ -848,140 +853,101 @@ namespace SharpChess.Domain
         /// </summary>
         /// <param name="strFileName"> The file name. </param>
         /// <returns> True if load was successful. </returns>
-        private bool LoadGame(string strFileName)
+        internal bool LoadGame(string strFileName)
         {
             MoveRedoList.Clear();
-            XmlDocument xmldoc = new XmlDocument();
-            try
-            {
-                xmldoc.Load(strFileName);
-            }
-            catch
+
+            GameSaveDto loadedData = GameSaveFile.Load(strFileName);
+
+            if (loadedData == null)
             {
                 return false;
             }
 
-            XmlElement xmlnodeGame = (XmlElement)xmldoc.SelectSingleNode("/Game");
-
-            if (xmlnodeGame == null)
+            if (loadedData.FEN != string.Empty)
             {
-                return false;
+                NewInternal(loadedData.FEN);
             }
 
-            if (xmlnodeGame.GetAttribute("FEN") != string.Empty)
+            if (loadedData.WhitePlayerIntellegence.HasValue)
             {
-                NewInternal(xmlnodeGame.GetAttribute("FEN"));
+                PlayerWhite.Intellegence = loadedData.WhitePlayerIntellegence.Value;
             }
 
-            if (xmlnodeGame.GetAttribute("WhitePlayer") != string.Empty)
+            if (loadedData.BlackPlayerIntellegence.HasValue)
             {
-                PlayerWhite.Intellegence = xmlnodeGame.GetAttribute("WhitePlayer") == "Human"
-                                               ? Player.PlayerIntellegenceNames.Human
-                                               : Player.PlayerIntellegenceNames.Computer;
+                PlayerBlack.Intellegence = loadedData.BlackPlayerIntellegence.Value;
             }
 
-            if (xmlnodeGame.GetAttribute("BlackPlayer") != string.Empty)
+            if (loadedData.BoardOrientation.HasValue)
             {
-                PlayerBlack.Intellegence = xmlnodeGame.GetAttribute("BlackPlayer") == "Human"
-                                               ? Player.PlayerIntellegenceNames.Human
-                                               : Player.PlayerIntellegenceNames.Computer;
+                Board.Orientation = loadedData.BoardOrientation.Value;
             }
 
-            if (xmlnodeGame.GetAttribute("BoardOrientation") != string.Empty)
+            if (loadedData.DifficultyLevel.HasValue)
             {
-                Board.Orientation = xmlnodeGame.GetAttribute("BoardOrientation") == "White"
-                                        ? Board.OrientationNames.White
-                                        : Board.OrientationNames.Black;
+                DifficultyLevel = loadedData.DifficultyLevel.Value;
             }
 
-            if (xmlnodeGame.GetAttribute("DifficultyLevel") != string.Empty)
+            if (loadedData.ClockMoves.HasValue)
             {
-                DifficultyLevel = int.Parse(xmlnodeGame.GetAttribute("DifficultyLevel"));
+                ClockMaxMoves = loadedData.ClockMoves.Value;
             }
 
-            if (xmlnodeGame.GetAttribute("ClockMoves") != string.Empty)
+            if (loadedData.ClockMinutes.HasValue)
             {
-                ClockMaxMoves = int.Parse(xmlnodeGame.GetAttribute("ClockMoves"));
+                ClockTime = new TimeSpan(0, loadedData.ClockMinutes.Value, 0);
             }
 
-            if (xmlnodeGame.GetAttribute("ClockMinutes") != string.Empty)
+            if (loadedData.ClockSeconds.HasValue)
             {
-                ClockTime = new TimeSpan(0, int.Parse(xmlnodeGame.GetAttribute("ClockMinutes")), 0);
+                ClockTime = new TimeSpan(0, 0, loadedData.ClockSeconds.Value);
             }
 
-            if (xmlnodeGame.GetAttribute("ClockSeconds") != string.Empty)
+            if (loadedData.MaximumSearchDepth.HasValue)
             {
-                ClockTime = new TimeSpan(0, 0, int.Parse(xmlnodeGame.GetAttribute("ClockSeconds")));
+                MaximumSearchDepth = loadedData.MaximumSearchDepth.Value;
             }
 
-            if (xmlnodeGame.GetAttribute("MaximumSearchDepth") != string.Empty)
+            if (loadedData.Pondering.HasValue)
             {
-                MaximumSearchDepth = int.Parse(xmlnodeGame.GetAttribute("MaximumSearchDepth"));
+                EnablePondering = loadedData.Pondering.Value;
             }
 
-            if (xmlnodeGame.GetAttribute("Pondering") != string.Empty)
+            if (loadedData.UseRandomOpeningMoves.HasValue)
             {
-                EnablePondering = xmlnodeGame.GetAttribute("Pondering") == "1";
+                UseRandomOpeningMoves = loadedData.UseRandomOpeningMoves.Value;
             }
 
-            if (xmlnodeGame.GetAttribute("UseRandomOpeningMoves") != string.Empty)
-            {
-                UseRandomOpeningMoves = xmlnodeGame.GetAttribute("UseRandomOpeningMoves") == "1";
-            }
+            foreach (var move in loadedData.Moves)
+            { 
+                MakeAMoveInternal(Move.MoveNameFromString(move.Name), move.From.Piece, move.To);
 
-            XmlNodeList xmlnodelist = xmldoc.SelectNodes("/Game/Move");
-
-            if (xmlnodelist != null)
-            {
-                foreach (XmlElement xmlnode in xmlnodelist)
+                TimeSpan tsnTimeStamp;
+                if (!move.SecondsElapsed.HasValue)
                 {
-                    Square from;
-                    Square to;
-                    if (xmlnode.GetAttribute("FromFile") != string.Empty)
+                    if (MoveHistory.Count <= 2)
                     {
-                        from = Board.GetSquare(
-                            Convert.ToInt32(xmlnode.GetAttribute("FromFile")),
-                            Convert.ToInt32(xmlnode.GetAttribute("FromRank")));
-                        to = Board.GetSquare(
-                            Convert.ToInt32(xmlnode.GetAttribute("ToFile")),
-                            Convert.ToInt32(xmlnode.GetAttribute("ToRank")));
+                        tsnTimeStamp = new TimeSpan(0);
                     }
                     else
                     {
-                        from = Board.GetSquare(xmlnode.GetAttribute("From"));
-                        to = Board.GetSquare(xmlnode.GetAttribute("To"));
+                        tsnTimeStamp = MoveHistory.PenultimateForSameSide.TimeStamp + (new TimeSpan(0, 0, 30));
                     }
-
-                    MakeAMoveInternal(Move.MoveNameFromString(xmlnode.GetAttribute("Name")), from.Piece, to);
-                    TimeSpan tsnTimeStamp;
-                    if (xmlnode.GetAttribute("SecondsElapsed") == string.Empty)
-                    {
-                        if (MoveHistory.Count <= 2)
-                        {
-                            tsnTimeStamp = new TimeSpan(0);
-                        }
-                        else
-                        {
-                            tsnTimeStamp = MoveHistory.PenultimateForSameSide.TimeStamp + (new TimeSpan(0, 0, 30));
-                        }
-                    }
-                    else
-                    {
-                        tsnTimeStamp = new TimeSpan(0, 0, int.Parse(xmlnode.GetAttribute("SecondsElapsed")));
-                    }
-
-                    MoveHistory.Last.TimeStamp = tsnTimeStamp;
-                    MoveHistory.Last.Piece.Player.Clock.TimeElapsed = tsnTimeStamp;
                 }
-
-                int intTurnNo = xmlnodeGame.GetAttribute("TurnNo") != string.Empty
-                                    ? int.Parse(xmlnodeGame.GetAttribute("TurnNo"))
-                                    : xmlnodelist.Count;
-
-                for (int intIndex = xmlnodelist.Count; intIndex > intTurnNo; intIndex--)
+                else
                 {
-                    UndoMoveInternal();
+                    tsnTimeStamp = new TimeSpan(0, 0, move.SecondsElapsed.Value);
                 }
+
+                MoveHistory.Last.TimeStamp = tsnTimeStamp;
+                MoveHistory.Last.Piece.Player.Clock.TimeElapsed = tsnTimeStamp;
+            }
+
+            int intTurnNo = loadedData.TurnNo.HasValue ? loadedData.TurnNo.Value : loadedData.Moves.Count;
+            for (int intIndex = loadedData.Moves.Count; intIndex > intTurnNo; intIndex--)
+            {
+                UndoMoveInternal();
             }
 
             return true;
@@ -1138,8 +1104,12 @@ namespace SharpChess.Domain
         ///   Save game using the specified file name.
         /// </summary>
         /// <param name="fileName"> The file name. </param>
-        private void SaveGame(string fileName)
+        internal void SaveGame(string fileName)
         {
+            GameSaveDto data = GameSaveDto.Create(this);
+            GameSaveFile.Save(fileName, data, GameSaveDto.CreateMoves(MoveRedoList));
+            
+            /*
             XmlDocument xmldoc = new XmlDocument();
             XmlElement xmlnodeGame = xmldoc.CreateElement("Game");
 
@@ -1173,6 +1143,7 @@ namespace SharpChess.Domain
             }
 
             xmldoc.Save(fileName);
+            */
         }
 
         /// <summary>

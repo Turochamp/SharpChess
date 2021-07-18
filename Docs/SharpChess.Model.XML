@@ -1834,7 +1834,7 @@
               The file name.
             </summary>
         </member>
-        <member name="M:SharpChess.Domain.Game.#ctor(SharpChess.Domain.IRegistryService)">
+        <member name="M:SharpChess.Domain.Game.#ctor(SharpChess.Domain.IWindowsRegistry,SharpChess.Domain.IGameSaveFile)">
             <summary>
               Initializes members of the <see cref="T:SharpChess.Domain.Game" /> class.
             </summary>
@@ -4907,6 +4907,12 @@
         <member name="P:SharpChess.Domain.WinBoard.WinBoardInputException.WinBoardMessage">
             <summary>
               Gets WinBoardMessage.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsExternalInit">
+            <summary>
+            Reserved to be used by the compiler for tracking metadata.
+            This class should not be used by developers in source code.
             </summary>
         </member>
     </members>
