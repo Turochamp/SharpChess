@@ -24,6 +24,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpChess.Application", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpChess.Infrastructure", "SharpChess.Infrastructure\SharpChess.Infrastructure.csproj", "{A46FE627-5E7D-42C6-91A6-2AF9FBF8497F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpChess.Application.Tests", "SharpChess.Application.Tests\SharpChess.Application.Tests.csproj", "{8E127A98-8167-4962-A1DE-4FC5409E3F97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +94,18 @@ Global
 		{A46FE627-5E7D-42C6-91A6-2AF9FBF8497F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{A46FE627-5E7D-42C6-91A6-2AF9FBF8497F}.Release|x86.ActiveCfg = Release|Any CPU
 		{A46FE627-5E7D-42C6-91A6-2AF9FBF8497F}.Release|x86.Build.0 = Release|Any CPU
+		{8E127A98-8167-4962-A1DE-4FC5409E3F97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E127A98-8167-4962-A1DE-4FC5409E3F97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E127A98-8167-4962-A1DE-4FC5409E3F97}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8E127A98-8167-4962-A1DE-4FC5409E3F97}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8E127A98-8167-4962-A1DE-4FC5409E3F97}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8E127A98-8167-4962-A1DE-4FC5409E3F97}.Debug|x86.Build.0 = Debug|Any CPU
+		{8E127A98-8167-4962-A1DE-4FC5409E3F97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E127A98-8167-4962-A1DE-4FC5409E3F97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E127A98-8167-4962-A1DE-4FC5409E3F97}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8E127A98-8167-4962-A1DE-4FC5409E3F97}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{8E127A98-8167-4962-A1DE-4FC5409E3F97}.Release|x86.ActiveCfg = Release|Any CPU
+		{8E127A98-8167-4962-A1DE-4FC5409E3F97}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

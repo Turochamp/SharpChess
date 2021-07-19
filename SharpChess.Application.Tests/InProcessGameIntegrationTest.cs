@@ -1,12 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SharpChess.Application;
+using SharpChess.Domain;
+using SharpChess.Domain.Tests;
 using System.IO;
 
 // TODO: Move to SharpChess.Application.Tests?
-namespace SharpChess.Domain.Tests
+namespace SharpChess.Application.Tests
 {
     [TestClass()]
-    public class GameIntegrationTest
+    public class InProcessGameIntegrationTest
     {
         [ClassInitialize()]
         public static void MyClassInitialize(TestContext testContext)
@@ -25,6 +26,7 @@ namespace SharpChess.Domain.Tests
             // TODO?: Add some move to SaveAndLoad_MidGame
 
             string fileName = "SaveAndLoad_MidGame.SharpChess";
+            File.Delete(fileName);
 
             // Act
             Game.SaveGame(fileName);
@@ -33,7 +35,7 @@ namespace SharpChess.Domain.Tests
             // Assert
             Assert.IsTrue(File.Exists(fileName));
             // TODO?: Analyse why set/get Fen versions are not the same
-            Assert.AreNotEqual(GameTest.MidGameFen, Fen.GameStartPosition); 
+            Assert.AreNotEqual(GameTest.MidGameFen, Fen.GameStartPosition);
         }
     }
 }
