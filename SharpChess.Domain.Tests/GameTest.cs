@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using SharpChess.Application;
+using System.Diagnostics;
 
 namespace SharpChess.Domain.Tests
 {
@@ -75,10 +75,11 @@ namespace SharpChess.Domain.Tests
         /// A test for Move Ordering - Mid game
         /// </summary>
         [TestMethod]
-        [Ignore] // TODO: Fix flaky test
+        [Ignore] // TODO: Fix flaky test (Red/Green: 34880/34851)
         public void MoveOrdering_MidGame()
         {
             int positions = this.NodeCountTest(MidGameFen, 5);
+            Debug.WriteLine($"Position: {positions}");
 
             // Assert.IsTrue(positions == 52931); Before finding pawn king hash score b-u-g.
             // Assert.IsTrue(positions == 94138); Before all captures in quiesence.
@@ -109,7 +110,7 @@ namespace SharpChess.Domain.Tests
         /// A test for Move Ordering - in the end game with a posible promotion
         /// </summary>
         [TestMethod]
-        [Ignore] // TODO: Fix flaky test
+        //[Ignore] // TODO: Fix flaky test
         public void MoveOrdering_EndGameWithPromotion()
         {
             int positions = this.NodeCountTest("8/2R2pk1/2P5/2r5/1p6/1P2Pq2/8/2K1B3 w - - 5 44", 5);

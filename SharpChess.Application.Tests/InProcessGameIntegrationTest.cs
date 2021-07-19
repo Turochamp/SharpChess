@@ -3,7 +3,6 @@ using SharpChess.Domain;
 using SharpChess.Domain.Tests;
 using System.IO;
 
-// TODO: Move to SharpChess.Application.Tests?
 namespace SharpChess.Application.Tests
 {
     [TestClass()]

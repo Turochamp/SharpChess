@@ -28,6 +28,7 @@ namespace SharpChess.Domain.AI
     #region Using
 
     using System;
+    using System.Diagnostics;
 
     #endregion
 
@@ -203,6 +204,11 @@ namespace SharpChess.Domain.AI
         public int IterativeDeepeningSearch(
             Player player, Moves principalVariation, TimeSpan recommendedSearchTime, TimeSpan maximumSearchTimeAllowed)
         {
+            Debug.WriteLine($"Player Score: {player.Score}");
+            Debug.WriteLine($"PrincipalVariation Count: {principalVariation.Count}");
+            Debug.WriteLine($"recommendedSearchTime: {recommendedSearchTime}");
+            Debug.WriteLine($"maximumSearchTimeAllowed: {maximumSearchTimeAllowed}");
+
             /* A new deeper ply of search will only be started, if the cutoff time hasnt been reached yet. 
              Minimum search time = 100 milli-second */
             TimeSpan searchTimeCutoff = new TimeSpan(recommendedSearchTime.Ticks / 3);

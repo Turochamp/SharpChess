@@ -3,7 +3,6 @@ using SharpChess.Application.Interface;
 
 namespace SharpChess.Infrastructure
 {
-    // TODO: Cover with integration tests
     public class WindowsRegistry : IWindowsRegistry
     {
         public string GetStringValue(string name)
